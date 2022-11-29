@@ -1,8 +1,9 @@
 SELECT
     customer_surname AS "best customers",
-    travelers AS "number of travels"
+    COUNT(customer_surname) AS "number of travels"
 FROM
     booking
+GROUP BY customer_surname
 
-ORDER BY travelers DESC, customer_surname DESC
+ORDER BY  COUNT(customer_surname) DESC, customer_surname DESC
 LIMIT 3

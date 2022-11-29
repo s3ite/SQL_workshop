@@ -1,8 +1,8 @@
 SELECT id, 
     CASE
-        WHEN NOW() > start_date and NOW() < end_date THEN 'ONGOING'
-        WHEN NOW() > end_date THEN 'DONE'
-        ELSE 'BOOKED'
+        WHEN NOW() > start_date and NOW() < end_date THEN 'Ongoing'
+        WHEN NOW() > end_date THEN 'Done'
+        ELSE 'Booked'
     END AS "trip status"
 FROM booking
 
