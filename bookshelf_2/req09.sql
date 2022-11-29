@@ -1,3 +1,3 @@
 SELECT country, name
 FROM authors
-ORDER BY country
+ORDER BY country, authors
