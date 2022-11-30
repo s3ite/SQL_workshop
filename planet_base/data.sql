@@ -8,7 +8,6 @@ INSERT INTO planet VALUES(default, 'Mercury', 0, 2439, 88, 1),         -- 1
                          (default, 'Saturn', 0, 58232, 10747, 1),      -- 6
                          (default, 'Uranus', 0, 25362, 30589, 1),      -- 7
                          (default, 'Neptune', 0, 24622, 59800, 1);     -- 8
-
 INSERT INTO satellite VALUES (default, 'Moon', 1737, 3),     -- 1
                              (default, 'Io', 1821, 5),       -- 2
                              (default, 'Europa', 1560, 5),   -- 3
