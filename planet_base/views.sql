@@ -23,9 +23,9 @@ ORDER BY "number of satellites", planet;
 
 CREATE OR REPLACE VIEW view_average_period
 AS
-SELECT planetary_system.name as system , ROUND(AVG(period),  2) AS "average_period"
+SELECT planetary_system.name as system , CASE WHEN ROUND(AVG(period),  2) > 0 THEN ROUND(AVG(period),  2) ELSE 0 END   AS "average_period"
 FROM planet
-INNER JOIN planetary_system on planetary_system.id = planet.id_system
+RIGHT JOIN planetary_system on planetary_system.id = planet.id_system
 GROUP BY system
 ORDER BY "average_period";
 
@@ -38,7 +38,7 @@ INNER JOIN planetary_system ON planetary_system.id = planet.id_system
 UNION
 SELECT 'satellite' as type, planetary_system.name as system, satellite.name, satellite.radius
 FROM satellite
-INNER JOIN planet ON planet.id = satellite.id
+INNER JOIN planet ON planet.id = satellite.id_planet
 INNER JOIN planetary_system ON planetary_system.id = planet.id_system
 ORDER BY radius DESC
 LIMIT 10

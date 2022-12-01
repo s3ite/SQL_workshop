@@ -1,4 +1,5 @@
 INSERT INTO planetary_system VALUES (1, 'Solar', 'Sun');
+INSERT INTO planetary_system VALUES (0, 'Epita', 'Epitar');
 
 INSERT INTO planet VALUES(default, 'Mercury', 0, 2439, 88, 1),         -- 1
                          (default, 'Venus', 0, 6051, 224, 1),          -- 2
