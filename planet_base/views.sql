@@ -40,6 +40,6 @@ SELECT 'satellite' as type, planetary_system.name as system, satellite.name, sat
 FROM satellite
 INNER JOIN planet ON planet.id = satellite.id_planet
 INNER JOIN planetary_system ON planetary_system.id = planet.id_system
-ORDER BY radius DESC
+ORDER BY radius DESC, name
 LIMIT 10
 

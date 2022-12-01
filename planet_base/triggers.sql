@@ -33,7 +33,7 @@ FOR EACH ROW EXECUTE FUNCTION update_table();
 
 CREATE OR REPLACE VIEW view_earth_population_evolution 
 AS
-SELECT id , to_char(modification_date, 'DD/MM/YYYY HH24:MI:SS')  as date, old_population as "old population", new_population as "new population"
+SELECT id , to_char(modification_date, 'DD/MM/YYYY HH24:MI')  as date, old_population as "old population", new_population as "new population"
 FROM result
 ORDER BY date;
 
