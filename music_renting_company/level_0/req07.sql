@@ -1,5 +1,5 @@
 DELETE FROM album
-WHERE regexp_count(name, 'P.') = 2
-	OR regexp_match(name, 'mm') = True
+WHERE name like '%P%P%'
+	OR name like '%mm%'
        	OR MOD(Length(name), 7) = 0
-	OR regexp_match(name, '&') = True
+	OR name like '%&%'
