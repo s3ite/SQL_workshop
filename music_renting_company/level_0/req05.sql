@@ -1,10 +1,11 @@
-INSERT INTO music_album
-(id, music_id, alb_id, track)
+INSERT INTO music_album (music_id, alb_id, track)
 VALUES
-(default, (SELECT music.id from music inner join artist on artist.id = music.id where title ilike 'Le Petit Pain au Chocolat' and artist.name ilike 'Joe DASSIN'), (SELECT id from album where album.name ilike 'Joe Dassin (Les Champs-Élysées)'), 2),
-
-
-(default, (SELECT music.id from music inner join artist on artist.id = music.id where title ilike 'Comment lui dire' and artist.name ilike 'France GALL'), (SELECT id from album where album.name ilike 'France Gall'), 1),
-
-(default, (SELECT music.id from music inner join artist on artist.id = music.id where title ilike 'C''est ta chance' and artist.name ilike 'Jean-Jacques GOLDMAN'), (SELECT id from album where album.name ilike 'Traces'), 3)
-
+((SELECT id FROM music WHERE music.title = 'Le Petit Pain au Chocolat'),
+	(SELECT id FROM album WHERE album.name = 'Joe Dassin (Les Champs-Élysées)'),
+	2),
+((SELECT id FROM music WHERE music.title = 'Comment lui dire'),
+	(SELECT id FROM album WHERE album.name = 'France Gall'),
+	1),
+((SELECT id FROM music WHERE music.title = 'C''est ta chance'),
+	(SELECT id FROM album WHERE album.name = 'Traces'),
+	3);
