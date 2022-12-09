@@ -1,27 +1,24 @@
 CREATE OR REPLACE VIEW view_artists
 AS
 Select name as artist, birth_date as birthdate, (Select count(art_id) FROM music where art_id = artist.id) as songs
-FROM
-artist
+FROM artist
 ORDER BY artist;
 
 
-CREATE OR REPLACE VIEW view_artists
+CREATE OR REPLACE VIEW view_albums
 AS
-Select  album.name as album, 
-			(Select count(art_id) FROM music where music.id = music_album.music_id) as songs, (select * from
-			duration_to_string(select SUM(duration) from music where music.id = music_album.music_id) as duration)
-FROM
-album
+Select  album.name as album, count(art_id) as songs, (select duration_to_string(duration)) as duration 
+FROM album, music_album
+JOIN music ON music_album.music_id = music.id
+GROUP BY album, duration
 ORDER BY album;
 
 
 CREATE OR REPLACE VIEW view_songs
 AS
-SELECT title as music , 
-			 (SELECT artist.name from artist where music.art_id = artist.id) as artist, (select * from
-			duration_to_string(select SUM(duration) from music where music.id = music_album.music_id) as duration)
-FROM
-music
+SELECT title as music , name as artist, (SELECT duration_to_string(duration)) as duration
+FROM music
+LEFT JOIN artist ON artist.id = music.art_id
+GROUP BY title, name, duration
 ORDER BY music, artist
 
